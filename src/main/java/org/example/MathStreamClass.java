@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.DoubleAdder;
 import java.util.stream.Collectors;
 
 public class MathStreamClass {
@@ -19,6 +21,16 @@ public class MathStreamClass {
     public Number sumNumber_2(List<Number> numbers){
         return numbers.stream()
                 .mapToDouble(r -> r.doubleValue()).sum();
+    }
+
+    /**
+     * Allow to sum all numbers with foreach method
+     */
+    public Number sumNumber_foreach_3(List<Number> numbers){
+        DoubleAdder res = new DoubleAdder();
+        
+         numbers.forEach(n -> res.add(n.doubleValue()));
+         return res.sum();
     }
 
     /**
